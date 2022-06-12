@@ -15,6 +15,8 @@ using namespace std;
 /*takeaways
 - Use DP
   - we are actually looking for permutations here
+    - (1,1,2) and (1,2,1) are considered different
+
   - dp[t] stores the number of permutations whose
     members will sum up to t
 
@@ -22,6 +24,7 @@ using namespace std;
   - dp[1] = dp[1] + dp[0] = 0 + 1 = 1
     by default dp[i] is all initalized to 0,
     so that's why we set dp[0] to 1
+  - {} -> {1}, there is ony one way
 
 - next target = 2, scan the entire set to calculate dp[2].
   - There are two possibilities:
@@ -38,6 +41,11 @@ using namespace std;
   - so dp[3] = dp[0] + dp[1] + dp[2] = 1 + 1 + 2  = 4
 - ok onto the last one when target is 4
   - start from 0 won't work
+    - you can come to 4 from 1 by adding a '3', from
+      2 by adding a '2', and from '3' by adding a '1'.
+    - since you only have {1,2,3} to choose from 
+      so you can't start from a '0' 
+
   - start from 1 you can add a 3, so {1} -> {1,3}
   - start from 2 you can add a 2, so {2} -> {2,2} and {1,1} -> {1,1,2}
   - start from 3 you can add a 1
